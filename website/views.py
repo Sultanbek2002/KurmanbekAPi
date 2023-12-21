@@ -12,4 +12,5 @@ class TeacherListCreateView(generics.ListCreateAPIView):
 class StudentListCreateView(generics.ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    
+class View():
+    print("Hello")
