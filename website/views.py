@@ -1,16 +1,36 @@
-from django.shortcuts import render
-from rest_framework import generics
-from .models import *
-from .serializers import *
-# Create your views here.
-class DirectorListCreateView(generics.ListCreateAPIView):
-    queryset = Director.objects.all()
-    serializer_class = DirectorSerializer
-class TeacherListCreateView(generics.ListCreateAPIView):
-    queryset = Teacher.objects.all()
-    serializer_class = TeacherSerializer
-class StudentListCreateView(generics.ListCreateAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
-class View():
-    print("Hello")
+from rest_framework import viewsets
+from .models import Roles, Predmet, Mugalim, Class, Okuuchular, Raspisanie, Posishenie, Janylyktar
+from .serializers import RolesSerializer, PredmetSerializer, MugalimSerializer, ClassSerializer, OkuuchularSerializer, RaspisanieSerializer, PosishenieSerializer, JanylyktarSerializer
+
+class RolesViewSet(viewsets.ModelViewSet):
+    queryset = Roles.objects.all()
+    serializer_class = RolesSerializer
+
+class PredmetViewSet(viewsets.ModelViewSet):
+    queryset = Predmet.objects.all()
+    serializer_class = PredmetSerializer
+
+class MugalimViewSet(viewsets.ModelViewSet):
+    queryset = Mugalim.objects.all()
+    serializer_class = MugalimSerializer
+
+class ClassViewSet(viewsets.ModelViewSet):
+    queryset = Class.objects.all()
+    serializer_class = ClassSerializer
+
+class OkuuchularViewSet(viewsets.ModelViewSet):
+    queryset = Okuuchular.objects.all()
+    serializer_class = OkuuchularSerializer
+
+class RaspisanieViewSet(viewsets.ModelViewSet):
+    queryset = Raspisanie.objects.all()
+    serializer_class = RaspisanieSerializer
+
+class PosishenieViewSet(viewsets.ModelViewSet):
+    queryset = Posishenie.objects.all()
+    serializer_class = PosishenieSerializer
+
+class JanylyktarViewSet(viewsets.ModelViewSet):
+    queryset = Janylyktar.objects.all()
+    serializer_class = JanylyktarSerializer
+
