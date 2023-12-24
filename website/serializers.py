@@ -1,5 +1,8 @@
 from rest_framework import serializers
 from .models import Roles, Predmet, Mugalim, Class, Okuuchular, Raspisanie, Posishenie, Janylyktar
+from .models import CustomUser
+
+
 
 class RolesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -37,3 +40,12 @@ class JanylyktarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Janylyktar
         fields = '__all__'
+
+
+
+#register
+class CustomUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ('id', 'username', 'email', 'password')  # Укажите поля, которые нужно сериализовать
+        extra_kwargs = {'password': {'write_only': True}}

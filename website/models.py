@@ -1,5 +1,24 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import AbstractUser
+
+class CustomUser(AbstractUser):
+    # Добавьте дополнительные поля, если необходимо
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name='customuser_set',  # Или другое уникальное имя
+        blank=True,
+        verbose_name='groups',
+        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name='customuser_set',  # Или другое уникальное имя
+        blank=True,
+        verbose_name='user permissions',
+        help_text='Specific permissions for this user.',
+    )
+
 # Create your models here.
 class Roles(models.Model):
     tittle=models.CharField(max_length=50)
@@ -60,7 +79,7 @@ class Posishenie(models.Model):
     okuuchu_id=models.ForeignKey(Okuuchular,on_delete=models.CASCADE)
     baa=models.IntegerField()
     active=models.BooleanField(default=True)
-    predmet_id=models
+    predmet_id=models.ForeignKey(Predmet,on_delete=models.CASCADE,default=True)
 
     def __str__(self) -> str:
         return f"{str(self.baa)} {str(self.okuuchu_id)}"

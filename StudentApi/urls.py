@@ -20,6 +20,12 @@ from website.views import *
 from django.urls import path, include
 from rest_framework import routers
 from website.views import RolesViewSet, PredmetViewSet, MugalimViewSet, ClassViewSet, OkuuchularViewSet, RaspisanieViewSet, PosishenieViewSet, JanylyktarViewSet
+from rest_framework_simplejwt.views import (
+    
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 
 router = routers.DefaultRouter()
 router.register(r'roles', RolesViewSet)
@@ -33,6 +39,9 @@ router.register(r'janylyktars', JanylyktarViewSet)
 
 
 urlpatterns = [
+    path('api/register/', RegisterUserView.as_view(), name='register_user'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('admin/', admin.site.urls),
     path('', include(router.urls)),    
 ]
