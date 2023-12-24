@@ -20,6 +20,7 @@ click-repl==0.3.0
 Django==4.2.7
 django-cors-headers==4.3.1
 djangorestframework==3.14.0
+djangorestframework-simplejwt==5.3.1
 frozenlist==1.4.0
 h11==0.14.0
 httpcore==1.0.2
@@ -33,6 +34,7 @@ Pillow==10.1.0
 prompt-toolkit==3.0.41
 pydantic==2.5.2
 pydantic_core==2.14.5
+PyJWT==2.8.0
 python-dateutil==2.8.2
 python-telegram-bot==20.7
 pytz==2023.3.post1
