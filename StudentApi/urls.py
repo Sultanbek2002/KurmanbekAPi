@@ -19,7 +19,7 @@ from django.urls import path
 from website.views import *
 from django.urls import path, include
 from rest_framework import routers
-from website.views import RolesViewSet, PredmetViewSet, MugalimViewSet, ClassViewSet, OkuuchularViewSet, RaspisanieViewSet, PosishenieViewSet, JanylyktarViewSet
+from website.views import RolesViewSet, PredmetViewSet, MugalimViewSet, ClassViewSet, OkuuchularViewSet, RaspisanieViewSet, PosishenieViewSet, JanylyktarViewSet,LoginTeacher,LoginStudent
 from rest_framework_simplejwt.views import (
     
     TokenObtainPairView,
@@ -29,19 +29,23 @@ from rest_framework_simplejwt.views import (
 
 router = routers.DefaultRouter()
 router.register(r'roles', RolesViewSet)
-router.register(r'predmets', PredmetViewSet)
-router.register(r'mugalims', MugalimViewSet)
-router.register(r'classes', ClassViewSet)
-router.register(r'okuuchulars', OkuuchularViewSet)
-router.register(r'raspisanies', RaspisanieViewSet)
-router.register(r'posishenies', PosishenieViewSet)
-router.register(r'janylyktars', JanylyktarViewSet)
+router.register(r'add/predmet/', PredmetViewSet)
+router.register(r'auth/v1/mu/register', MugalimViewSet)
+router.register(r'add/klass/', ClassViewSet)
+router.register(r'auth/v1/ok/register', OkuuchularViewSet)
+router.register(r'add/raspisanie/', RaspisanieViewSet)
+router.register(r'add/poshishenie/', PosishenieViewSet)
+router.register(r'add/news/', JanylyktarViewSet)
 
 
 urlpatterns = [
-    path('api/register/', RegisterUserView.as_view(), name='register_user'),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    # path('api/register/', RegisterUserView.as_view(), name='register_user'),
+    # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),    
+    path('', include(router.urls)),
+    
+    path('auth/v1/mu/login',LoginTeacher,name='login'),
+    path('auth/v1/ok/login',LoginStudent,name="loginstudent")
+    # path('auth/v1/mu/register',registerTeacher,name='teachregister')   
 ]

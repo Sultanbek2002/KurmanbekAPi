@@ -65,7 +65,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Замените на адрес вашего фронтенда
     "http://127.0.0.1:3000",  # Замените на адрес вашего фронтенда
 ]
-
+CSRF_COOKIE_SECURE = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
